@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+{% block inputber %}
+  background-color:#191784;
+  color:#ffffff;
+{% endblock %}
+{% block iconinputber %}
+    {{ url_for('static', filename='icon.png') }} 
+{% endblock %}
+{% block isi %}
+<div class="w3-padding-64 w3-content w3-text-white" id="contact">
+    <h2 class="w3-text-white">Input Nilai</h2>
+
+    <form action="/InputBER" method="post">
+      <p>
+        <label for="kanal">Kanal</label>
+      </p>
+      <p><select class="w3-select" name="kanal" id="kanal">
+        <option value="" disabled selected>Pilih Kanal</option>
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="16">16</option>
+      </select>
+      </p>
+      <p>
+        <label for="spasi">Spasi Kanal</label>
+      </p>
+      <p><select class="w3-select" name="spasi" id="spasi">
+        <option value="" disabled selected>Pilih Spasi Kanal</option>
+        <option value="60">0.6</option>
+        <option value="80">0.8</option>
+        <option value="100">1</option>
+      </select>
+      </p>
+      <p>
+        <label for="power">Power (dBm)</label>
+      </p>
+      <p><select class="w3-select" name="power" id="power">
+        <option value="" disabled selected>Pilih power</option>
+        <option value="-5">-5</option>
+        <option value="0">0</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      </p>
+      <p>
+        <label for="panjang">Panjang Kabel (km)</label>
+      </p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="20 - 100" required name="panjang" step="any" id="panjang" min="20" max="100">
+      </p>
+      <p>
+        <label for="redaman">Bit Rate (Gbps)</label>
+      </p>
+      <p><select class="w3-select" name="redaman" id="redaman">
+        <option value="" disabled selected>Pilih Bit Rate</option>
+        <option value="7.5">7.5</option>
+        <option value="10">10</option>
+      </select>
+      </p>
+      <p>
+        <label for="osnr">OSNR (dB)</label>
+      </p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="9 - 38" step="any" required name="osnr" id="osnr" min="9" max="38">
+      </p>
+      <p>
+        <label for="qfactor">Q-Factor</label>
+      </p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="0 - 6" required name="qfactor" step="any" id="qfactor" min="0" max="6">
+      </p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SUBMIT
+        </button>
+      </p>
+    </form>
+    <tr>
+      {% if hasilber %}
+      <script>
+        alert("Berdasarkan nilai BER dan OSNR, hasil dari inputan tersebut {{hasilber}}")
+      </script>
+      {%endif%}
+    </tr>
+  <!-- End Contact Section -->
+  </div>
+{% endblock %}
